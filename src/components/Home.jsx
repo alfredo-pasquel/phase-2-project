@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Typography, Box, Card, CardMedia, CardContent, CardActionArea, Grid2 } from '@mui/material';
 import { Link } from 'react-router-dom';
+
 const Home = () => {
   const [bio, setBio] = useState('');
   const [bioImage, setBioImage] = useState('');
@@ -30,26 +31,49 @@ const Home = () => {
 
   return (
     <Container sx={{ marginTop: '15px', paddingBottom: '15px', maxWidth: '100%' }}>
-      <Box sx={{ textAlign: 'center', marginBottom: 1 }}>
-        {bioImage && (
-          <Box sx={{ display: 'flex', justifyContent: 'center', marginBottom: 1
-           }}>
-            <img
-              src={bioImage}
-              alt="Alfredo Pasquel"
-              style={{
-                maxWidth: '350px',
-                width: '100%',
-                height: 'auto',
-              }}
-            />
-          </Box>
-        )}
-        <Typography variant="body1" sx={{ marginBottom: 1 }}>
+      {/* Biography Section with Background Image */}
+      <Box
+        sx={{
+          position: 'relative',
+          height: '450px',
+          width: '100%',
+          backgroundImage: `url(${bioImage})`,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: '#fff',
+          textShadow: '2px 2px 4px rgba(0,0,0,0.7)',
+        }}
+      >
+        {/* Semi-transparent overlay behind the text */}
+        <Box
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.75)', // Semi-transparent black overlay
+          }}
+        />
+        <Typography
+          variant="h6"
+          sx={{
+            position: 'relative', // Position text relative to the overlay
+            color: '#fff',
+            padding: '20px',
+            zIndex: 1, // Make sure the text is above the overlay
+            textAlign: 'center',
+          }}
+        >
           {bio}
         </Typography>
       </Box>
-      <Typography variant="h5" gutterBottom sx={{marginLeft: "130px"}}>
+
+      {/* Known For Section */}
+      <Typography variant="h5" gutterBottom sx={{ marginTop: '50px', marginLeft: '130px' }}>
         Known For:
       </Typography>
       <Grid2 container spacing={2} justifyContent="center">

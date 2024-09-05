@@ -42,7 +42,7 @@ function Awards() {
                 primaryTypographyProps={{ textAlign: 'center' }}  
                 secondaryTypographyProps={{ textAlign: 'center' }}
                 primary={`${win.award} - ${win.category}`}
-                secondary={`For: ${win.work} (${win.year})`}
+                secondary={`For: "${win.work}" by ${win.artist} (${win.year})`}
               />
             </ListItem>
           ))}

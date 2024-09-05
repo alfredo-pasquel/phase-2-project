@@ -22,7 +22,7 @@ const CreditsList = () => {
   return (
     <Container
       sx={{
-        marginTop: 8,
+        marginTop: 4,
         padding: 0,
         display: 'flex',
         justifyContent: 'center',

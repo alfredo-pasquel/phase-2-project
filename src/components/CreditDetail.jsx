@@ -57,11 +57,11 @@ function CreditDetail() {
 
   return (
     <Box 
-      sx={{ 
-        display: 'flex', 
-        flexDirection: 'column', 
+      sx={{
+        marginTop: 2,
         justifyContent: 'center', 
         alignItems: 'center', 
+        minHeight: '100vh',
         height: '90vh', 
         width: '100vw', 
         textAlign: 'center',

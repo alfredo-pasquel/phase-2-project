@@ -41,7 +41,7 @@ function AddCreditForm() {
         justifyContent: 'center',
         alignItems: 'center',
         minHeight: '65vh',
-        padding: '20px',
+        marginTop: 6,
       }}
     >
       <Typography variant="h4" gutterBottom>

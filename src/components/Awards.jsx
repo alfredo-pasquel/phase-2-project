@@ -16,13 +16,17 @@ function Awards() {
     <Container>
       <Box 
         sx={{
-          position: 'absolute',
-          top: '35%',
-          left: '50%',
-          transform: 'translate(-50%, -40%)',
+
+
+
+
           textAlign: 'center',
           width: '100%',
-          maxWidth: '800px'
+
+
+          marginTop: 6,
+          overflow: 'auto',
+          minHeight: '100vh',
         }}
       >
         <Typography variant="h4" gutterBottom textAlign="center">

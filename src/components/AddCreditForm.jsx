@@ -13,7 +13,7 @@ function AddCreditForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newCredit = { title, role, year, description, image };
+    const newCredit = { title, role, year, image };
 
     fetch('https://phase-2-project-api.onrender.com/music_credits', {
       method: 'POST',

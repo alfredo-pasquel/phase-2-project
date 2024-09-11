@@ -16,14 +16,8 @@ function Awards() {
     <Container>
       <Box 
         sx={{
-
-
-
-
           textAlign: 'center',
           width: '100%',
-
-
           marginTop: 6,
           overflow: 'auto',
           minHeight: '100vh',
@@ -57,7 +51,7 @@ function Awards() {
                 primaryTypographyProps={{ textAlign: 'center' }} 
                 secondaryTypographyProps={{ textAlign: 'center' }}
                 primary={`${nomination.award} - ${nomination.category}`}
-                secondary={`For: ${nomination.work} (${nomination.year})`}
+                secondary={`For: "${nomination.work}" (${nomination.year})`}
               />
             </ListItem>
           ))}

@@ -9,7 +9,6 @@ function AddCreditForm() {
   const [title, setTitle] = useState('');
   const [role, setRole] = useState('');
   const [year, setYear] = useState('');
-  const [description, setDescription] = useState('');
   const [image, setImage] = useState('');
 
   const handleSubmit = (e) => {
@@ -27,7 +26,6 @@ function AddCreditForm() {
         setTitle('');
         setRole('');
         setYear('');
-        setDescription('');
         setImage('');
         navigate(`/credits/${data.id}`); 
       });

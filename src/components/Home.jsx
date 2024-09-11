@@ -25,13 +25,12 @@ const Home = () => {
         setKnownForCredits(data);
       })
       .catch((error) => {
-        console.error('Error fetching specific credits:', error);
+        console.error(error);
       });
   }, []);
 
   return (
     <Container sx={{ marginTop: '15px', paddingBottom: '15px', maxWidth: '100%' }}>
-      {/* Biography Section with Background Image */}
       <Box
         sx={{
           position: 'relative',
@@ -47,7 +46,6 @@ const Home = () => {
           textShadow: '2px 2px 4px rgba(0,0,0,0.7)',
         }}
       >
-        {/* Semi-transparent overlay behind the text */}
         <Box
           sx={{
             position: 'absolute',
@@ -55,24 +53,22 @@ const Home = () => {
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.75)', // Semi-transparent black overlay
+            backgroundColor: 'rgba(0, 0, 0, 0.75)',
           }}
         />
         <Typography
           variant="h6"
           sx={{
-            position: 'relative', // Position text relative to the overlay
+            position: 'relative', 
             color: '#fff',
             padding: '20px',
-            zIndex: 1, // Make sure the text is above the overlay
+            zIndex: 1, 
             textAlign: 'center',
           }}
         >
           {bio}
         </Typography>
       </Box>
-
-      {/* Known For Section */}
       <Typography variant="h5" gutterBottom sx={{ marginTop: '50px', marginLeft: '130px' }}>
         Known For:
       </Typography>
@@ -80,10 +76,6 @@ const Home = () => {
         {knownForCredits.map((credit) => (
           <Grid2
             item
-            xs={12}
-            sm={6}
-            md={3}
-            lg={3}
             sx={{
               flexBasis: '25%',
               maxWidth: '300px',

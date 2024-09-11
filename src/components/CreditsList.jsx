@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useOutletContext } from 'react-router-dom';
-import { Container, Card, CardActionArea, CardMedia } from '@mui/material';
-import Grid2 from '@mui/material/Grid2';
+import { Container, Card, CardActionArea, CardMedia, Grid2 } from '@mui/material';
 
 const CreditsList = () => {
   const [credits, setCredits] = useState([]);
@@ -41,7 +40,7 @@ const CreditsList = () => {
         }}
       >
         {filteredCredits.map((credit) => (
-          <Grid2 item xs={12} sm={6} md={4} lg={3} key={credit.id}>
+          <Grid2 key={credit.id}>
             <Card>
               <CardActionArea component={Link} to={`/credits/${credit.id}`}>
                 <CardMedia

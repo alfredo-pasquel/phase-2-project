@@ -1,13 +1,15 @@
+// src/App.jsx
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';  
-import RootLayout from './layouts/RootLayout'; 
+import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
+import RootLayout from './layouts/RootLayout';
 import CreditsList from './components/CreditsList';
 import AddCreditForm from './components/AddCreditForm';
 import Awards from './components/Awards';
 import Home from './components/Home';
 import CreditDetail from './components/CreditDetail';
+import BackgroundWrapper from './components/BackgroundWrapper'; // Import BackgroundWrapper
 
 const darkTheme = createTheme({
   palette: {
@@ -30,7 +32,16 @@ const App = () => {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <RootLayout searchTerm={searchTerm} handleSearch={handleSearch} credits={credits} addCredit={addCredit} />,
+      element: (
+        <BackgroundWrapper>
+          <RootLayout
+            searchTerm={searchTerm}
+            handleSearch={handleSearch}
+            credits={credits}
+            addCredit={addCredit}
+          />
+        </BackgroundWrapper>
+      ),
       children: [
         { path: '', element: <Home /> },
         { path: 'credits', element: <CreditsList /> },
@@ -42,8 +53,8 @@ const App = () => {
   ]);
 
   return (
-    <ThemeProvider theme={darkTheme}> 
-      <CssBaseline /> 
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
       <RouterProvider router={router} />
     </ThemeProvider>
   );

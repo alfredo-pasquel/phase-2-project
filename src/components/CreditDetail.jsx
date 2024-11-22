@@ -1,6 +1,7 @@
+// src/components/CreditDetail.jsx
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Box, Typography, CircularProgress } from '@mui/material';
+import { Box, Typography, CircularProgress, Container } from '@mui/material';
 
 function CreditDetail() {
   const { id } = useParams();
@@ -15,39 +16,43 @@ function CreditDetail() {
         setLoading(false);
       })
       .catch((error) => {
-        console.error("Error fetching credit detail:", error);
+        console.error('Error fetching credit detail:', error);
         setLoading(false);
       });
   }, [id]);
 
   if (loading) {
     return (
-      <Box  
-        sx={{ 
-          display: 'flex', 
-          justifyContent: 'center', 
-          alignItems: 'center', 
-          height: '100vh', 
-          width: '100vw', 
-          textAlign: 'center' 
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column', // Stack items vertically
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh',
+          textAlign: 'center',
+          padding: 2,
         }}
       >
         <CircularProgress />
-        <Typography variant="h6">Loading...</Typography>
+        <Typography variant="h6" sx={{ marginTop: 2 }}>
+          Loading...
+        </Typography>
       </Box>
     );
   }
 
   if (!credit) {
     return (
-      <Box 
-        sx={{ 
-          display: 'flex', 
-          justifyContent: 'center', 
-          alignItems: 'center', 
-          height: '100vh', 
-          width: '100vw', 
-          textAlign: 'center' 
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column', // Stack items vertically
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh',
+          textAlign: 'center',
+          padding: 2,
         }}
       >
         <Typography variant="h6">Credit not found</Typography>
@@ -56,39 +61,32 @@ function CreditDetail() {
   }
 
   return (
-    <Box 
-      sx={{
-        marginTop: 2,
-        justifyContent: 'center', 
-        alignItems: 'center', 
-        minHeight: '100vh',
-        height: '90vh', 
-        width: '100vw', 
-        textAlign: 'center',
-        padding: '20px' 
-      }}
-    >
-      <Typography variant="h4" gutterBottom>
+    <Container maxWidth="sm" sx={{ marginTop: 4, marginBottom: 4 }}>
+      <Typography variant="h4" gutterBottom align="center">
         {credit.title}
       </Typography>
-      <Typography variant="body1" gutterBottom>
+      <Typography variant="body1" gutterBottom align="center">
         Year: {credit.year}
       </Typography>
-      <Typography variant="body1" gutterBottom>
+      <Typography variant="body1" gutterBottom align="center">
         Role: {credit.role}
       </Typography>
-      <Box 
-        component="img" 
-        src={credit.image} 
-        alt={credit.title} 
-        sx={{ 
-          width: '500px',
-          height: 'auto', 
-          marginTop: '20px', 
-          borderRadius: '8px' 
-        }} 
+      <Box
+        component="img"
+        src={credit.image}
+        alt={credit.title}
+        sx={{
+          width: '100%',        // Image takes full width of container
+          height: 'auto',
+          maxWidth: '500px',    // Limit the maximum width
+          marginTop: '20px',
+          borderRadius: '8px',
+          display: 'block',
+          marginLeft: 'auto',
+          marginRight: 'auto',  // Center the image
+        }}
       />
-    </Box>
+    </Container>
   );
 }
 

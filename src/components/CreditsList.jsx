@@ -1,10 +1,11 @@
+// src/components/CreditsList.jsx
 import React, { useEffect, useState } from 'react';
 import { Link, useOutletContext } from 'react-router-dom';
-import { Container, Card, CardActionArea, CardMedia, Grid2 } from '@mui/material';
+import { Container, Card, CardActionArea, CardMedia, Grid } from '@mui/material';
 
 const CreditsList = () => {
   const [credits, setCredits] = useState([]);
-  const { searchTerm } = useOutletContext(); 
+  const { searchTerm } = useOutletContext();
 
   useEffect(() => {
     fetch('https://phase-2-project-api.onrender.com/music_credits')
@@ -26,35 +27,47 @@ const CreditsList = () => {
         display: 'flex',
         justifyContent: 'center',
         minHeight: '100vh',
-        maxWidth: '100%',
+        maxWidth: 'lg',
       }}
     >
-      <Grid2
+      <Grid
         container
         spacing={2}
         justifyContent="center"
         sx={{
           width: '100%',
           margin: '0 auto',
-          gap: '4px',
         }}
       >
         {filteredCredits.map((credit) => (
-          <Grid2 key={credit.id}>
-            <Card>
+          <Grid
+            item
+            key={credit.id}
+            xs={12}
+            sm={6}
+            md={4}
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          >
+            <Card sx={{ width: '100%', maxWidth: '300px' }}>
               <CardActionArea component={Link} to={`/credits/${credit.id}`}>
                 <CardMedia
                   component="img"
-                  height="200"
                   image={credit.image}
                   alt={credit.title}
-                  sx={{ objectFit: 'cover', width: '100%' }}
+                  sx={{
+                    width: '100%',
+                    height: 'auto',
+                    aspectRatio: '2 / 3', // Use 2:3 aspect ratio for movie posters
+                  }}
                 />
               </CardActionArea>
             </Card>
-          </Grid2>
+          </Grid>
         ))}
-      </Grid2>
+      </Grid>
     </Container>
   );
 };

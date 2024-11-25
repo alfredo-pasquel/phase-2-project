@@ -8,14 +8,16 @@ import {
   CardMedia,
   CardContent,
   CardActionArea,
+  Button,
 } from '@mui/material';
 import Grid from '@mui/material/Grid';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const [bio, setBio] = useState('');
   const [bioImage, setBioImage] = useState('');
   const [knownForCredits, setKnownForCredits] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch('https://phase-2-project-api.onrender.com/main')
@@ -43,7 +45,7 @@ const Home = () => {
 
   return (
     <Container sx={{ marginTop: '60px', paddingBottom: '15px', maxWidth: 'lg' }}>
-      <Box
+      {/* <Box
         sx={{
           position: 'relative',
           height: { xs: 'auto', md: '450px' },
@@ -54,8 +56,8 @@ const Home = () => {
           alignItems: 'center',
           justifyContent: 'center',
         }}
-      >
-        <Typography
+      > */}
+        {/* <Typography
           variant="h6"
           sx={{
             position: 'relative',
@@ -68,14 +70,15 @@ const Home = () => {
           }}
         >
           {bio}
-        </Typography>
-      </Box>
+        </Typography> */}
+      {/* </Box> */}
       <Typography
         variant="h5"
         gutterBottom
         sx={{
           marginTop: '50px',
           marginLeft: { xs: '0', md: '130px' },
+          marginBottom: '50px',
           textAlign: { xs: 'center', md: 'left' },
         }}
       >
@@ -114,6 +117,16 @@ const Home = () => {
           </Grid>
         ))}
       </Grid>
+      <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => navigate('/credits')}
+          sx={{marginTop: '15px', marginBottom: '75px'}}
+        >
+          View All Credits
+        </Button>
+      </Box>
     </Container>
   );
 };

@@ -56,7 +56,7 @@ const NavBar = ({ onSearch }) => {
           placeholder="Search Credits"
           sx={{
             width: '300px',
-            marginLeft: '100px',
+            // marginLeft: '10px',
           }}
           variant="outlined"
           align="center"

@@ -96,14 +96,14 @@ const NavBar = ({ onSearch }) => {
             >
               Credits
             </MenuItem>
-            <MenuItem
+            {/* <MenuItem
               onClick={() => {
                 navigate('/add-credit');
                 handleClose();
               }}
             >
               Add Credit
-            </MenuItem>
+            </MenuItem> */}
             <MenuItem
               onClick={() => {
                 navigate('/awards');

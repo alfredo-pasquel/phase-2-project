@@ -46,7 +46,7 @@ const App = () => {
         { path: '', element: <Home /> },
         { path: 'credits', element: <CreditsList /> },
         { path: 'credits/:id', element: <CreditDetail /> },
-        { path: 'add-credit', element: <AddCreditForm /> },
+        // { path: 'add-credit', element: <AddCreditForm /> },
         { path: 'awards', element: <Awards /> },
       ],
     },

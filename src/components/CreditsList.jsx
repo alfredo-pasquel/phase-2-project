@@ -39,7 +39,8 @@ const CreditsList = () => {
           margin: '0 auto',
         }}
       >
-        {[...filteredCredits].reverse().map((credit) => (
+        {[...filteredCredits].sort((a, b) => Number(b.id) - Number(a.id)).map((credit) => (
+
           <Grid
             item
             key={credit.id}

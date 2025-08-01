@@ -27,7 +27,7 @@ const Home = () => {
         setBioImage(data[0].image);
       });
 
-    const creditIds = [4, 13, 7];
+    const creditIds = [42, 33, 39];
     Promise.all(
       creditIds.map((id) =>
         fetch(`https://phase-2-project-api.onrender.com/music_credits/${id}`).then((response) =>

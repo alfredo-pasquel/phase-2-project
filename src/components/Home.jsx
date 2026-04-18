@@ -19,29 +19,32 @@ const Home = () => {
   const [knownForCredits, setKnownForCredits] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetch('https://phase-2-project-api.onrender.com/main')
-      .then((response) => response.json())
-      .then((data) => {
-        setBio(data[0].biography);
-        setBioImage(data[0].image);
-      });
+useEffect(() => {
+  // bio fetch (unchanged)
+  fetch('https://phase-2-project-api.onrender.com/main')
+    .then((response) => response.json())
+    .then((data) => {
+      setBio(data[0].biography);
+      setBioImage(data[0].image);
+    });
 
-    const creditIds = [42, 33, 39];
-    Promise.all(
-      creditIds.map((id) =>
-        fetch(`https://phase-2-project-api.onrender.com/music_credits/${id}`).then((response) =>
-          response.json()
+  // NEW normalized flow
+  fetch('https://phase-2-project-api.onrender.com/known_for')
+    .then((res) => res.json())
+    .then((ids) =>
+      Promise.all(
+        ids.map((id) =>
+          fetch(`https://phase-2-project-api.onrender.com/music_credits/${id}`)
+            .then((res) => res.json())
         )
       )
     )
-      .then((data) => {
-        setKnownForCredits(data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+    .then((credits) => {
+      setKnownForCredits(credits);
+    })
+    .catch(console.error);
+
+}, []);
 
   return (
     <Container sx={{ marginTop: '60px', paddingBottom: '15px', maxWidth: 'lg' }}>
